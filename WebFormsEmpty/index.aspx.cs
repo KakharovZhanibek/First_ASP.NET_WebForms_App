@@ -4,23 +4,31 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebFormsEmpty.Models;
 
 namespace WebFormsEmpty
 {
     public partial class index : System.Web.UI.Page
     {
+        private CountryService countryService;
+        public index()
+        {
+            countryService = new CountryService();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            TB_3.Text = "Load";
+            GridViewRefresh();
         }
-        protected void Page_Init(object sender, EventArgs e)
+        public void GridViewRefresh()
         {
-            TB_3.Text = "Init";
+            GridView1.DataSource = Repos.Repo;
+            GridView1.DataBind();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void AddCountryBtn_Click(object sender, EventArgs e)
         {
-            TB_3.Text = (Convert.ToInt32(TB_1.Text) + Convert.ToInt32(TB_2.Text)).ToString();
+            countryService.Add(new Country() { Id = 6, Name = "Korea", Capital = "Seol" });
+            GridViewRefresh();
         }
     }
 }

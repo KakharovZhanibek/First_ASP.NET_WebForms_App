@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
+    <Content Include="Second.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +83,10 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ICountryService.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\CountryService.cs" />
+    <Compile Include="Models\Repos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,7 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
