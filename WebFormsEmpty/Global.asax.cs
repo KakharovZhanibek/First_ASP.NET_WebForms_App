@@ -10,9 +10,15 @@ namespace WebFormsEmpty
 {
     public class Global : System.Web.HttpApplication
     {
+        int ApplicationCounter = 0;
         protected void Application_Start(object sender, EventArgs e)
         {
             Repos repos = new Repos();
+        }
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            Session["DateTime_Now"] = DateTime.Now;
+            Session["Date_Now"] = DateTime.Now.Date;   
         }
     }
 }

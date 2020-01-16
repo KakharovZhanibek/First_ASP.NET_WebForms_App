@@ -5,6 +5,7 @@ using System.Web;
 
 namespace WebFormsEmpty.Models
 {
+    [Serializable]
     public class Country
     {
         public int Id { get; set; }

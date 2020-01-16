@@ -21,7 +21,10 @@ namespace WebFormsEmpty.Models
 
         public void Delete(int Id)
         {
-            throw new NotImplementedException();
+            if (Repos.Repo.Exists(e => e.Id == Id))
+            {
+                Repos.Repo.Remove(Repos.Repo.FirstOrDefault(f => f.Id == Id));
+            }
         }
 
         public List<Country> GetAll()
@@ -56,7 +59,12 @@ namespace WebFormsEmpty.Models
 
         public void Update_2(Country country, int Id)
         {
-            throw new NotImplementedException();
+            var c = GetById(Id);
+            if (c != null)
+            {
+                c.Name = country.Name;
+                c.Capital = country.Capital;
+            }
         }
         public void Update_3(Country country)
         {
