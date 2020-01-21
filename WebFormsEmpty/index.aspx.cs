@@ -1,33 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebFormsEmpty.Implementations;
+using WebFormsEmpty.Interfaces;
 using WebFormsEmpty.Models;
+
 
 namespace WebFormsEmpty
 {
     public partial class index : System.Web.UI.Page
     {
-        private CountryService countryService;
+        //private CountryService countryService;
+        private readonly ICountryService countryService;
         public index()
         {
-            countryService = new CountryService();
+            countryService = new CountryServiceDb();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridViewRefresh();
-            Session["DateTime_Now"] = DateTime.Now;
-            Session["Date_Now"] = DateTime.Now.Date;
-            
-            Country country = new Country() {Id=9,Name="England",Capital="London"};
-            Session["s1"] = country;
-            
+            //GridViewRefresh();
+            //Session["DateTime_Now"] = DateTime.Now;
+            //Session["Date_Now"] = DateTime.Now.Date;
+
+            //Country country = new Country() {Id=9,Name="England",Capital="London"};
+            //Session["s1"] = country;
+
+
+            //countryService.Add(new Country() { Name="China",Capital="Pekin" });
+            //countryService.Delete(4);
+            GridView1.DataSource = countryService.GetById(1);
+            GridView1.DataBind();
+
         }
         public void GridViewRefresh()
         {
-            GridView1.DataSource = Repos.Repo;
+            GridView1.DataSource = countryService.GetAll();
             GridView1.DataBind();
         }
 
