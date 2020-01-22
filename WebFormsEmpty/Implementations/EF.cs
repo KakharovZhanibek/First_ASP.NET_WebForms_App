@@ -1,62 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using WebFormsEmpty.Interfaces;
-using WebFormsEmpty.Models;
 
-namespace WebFormsEmpty.Implementations
+namespace WebFormsEmpty.Models
 {
-    public class CountryService : ICountryService
+    public class CountryServiceEF : ICountryService
     {
-        private Repos repos;
+        MyDb myDb;
 
-        public CountryService()
+        public CountryServiceEF()
         {
-            repos = new Repos();
+            myDb = new MyDb();
         }
         public void Add(Country country)
         {
-            Repos.Repo.Add(country);
+            myDb.Country.Add(country);
+            myDb.SaveChanges();
         }
-        
 
         public void Delete(int Id)
         {
-            if (Repos.Repo.Exists(e => e.Id == Id))
+            if (myDb.Country.FirstOrDefault(f => f.Id == Id)!=null)
             {
-                Repos.Repo.Remove(Repos.Repo.FirstOrDefault(f => f.Id == Id));
+                myDb.Country.Remove(myDb.Country.FirstOrDefault(f => f.Id == Id));
             }
+            myDb.SaveChanges();
         }
 
         public List<Country> GetAll()
         {
-            throw new NotImplementedException();
+            return myDb.Country.ToList();
         }
 
         public IEnumerable<Country> GetAll2()
         {
-            throw new NotImplementedException();
+            return myDb.Country.AsEnumerable();
         }
 
         public Country GetById(int Id)
         {
-            return Repos.Repo.FirstOrDefault(f => f.Id==Id); 
+            return myDb.Country.FirstOrDefault(f => f.Id == Id);
         }
 
         public IEnumerable<Country> GetByName(string Name)
         {
-            return Repos.Repo.Where(w => w.Name == Name);
+            return myDb.Country.Where(w => w.Name == Name).AsEnumerable();
         }
 
         public void Update_1(Country country)
         {
-            var sourceCountry = Repos.Repo.FirstOrDefault(f => f.Id == country.Id);
+            var sourceCountry =myDb.Country.FirstOrDefault(f => f.Id == country.Id);
             if (sourceCountry != null)
             {
                 sourceCountry.Name = country.Name;
                 sourceCountry.Capital = country.Name;
             }
+            myDb.SaveChanges();
         }
 
         public void Update_2(Country country, int Id)
@@ -67,13 +69,11 @@ namespace WebFormsEmpty.Implementations
                 c.Name = country.Name;
                 c.Capital = country.Capital;
             }
+            myDb.SaveChanges();
         }
-
-      
-
         public void Update_3(Country country)
         {
-            var c = (from p in Repos.Repo
+            var c = (from p in myDb.Country
                      where p.Id == country.Id
                      select p).SingleOrDefault();
             if (c != null)
@@ -81,26 +81,7 @@ namespace WebFormsEmpty.Implementations
                 c.Name = country.Name;
                 c.Capital = country.Capital;
             }
-        }
-
-        List<Country> ICountryService.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Country> ICountryService.GetAll2()
-        {
-            throw new NotImplementedException();
-        }
-
-        Country ICountryService.GetById(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Country> ICountryService.GetByName(string Name)
-        {
-            throw new NotImplementedException();
+            myDb.SaveChanges();
         }
     }
 }

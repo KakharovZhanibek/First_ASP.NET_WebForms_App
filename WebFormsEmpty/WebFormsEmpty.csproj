@@ -43,7 +43,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,10 +78,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About.aspx" />
     <Content Include="App_Data\Mydb.mdf" />
     <Content Include="App_Data\Mydb_log.ldf">
       <DependentUpon>Mydb.mdf</DependentUpon>
     </Content>
+    <Content Include="Contacts.aspx" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="Second.aspx" />
@@ -80,10 +93,27 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contacts.aspx.cs">
+      <DependentUpon>Contacts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contacts.aspx.designer.cs">
+      <DependentUpon>Contacts.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Implementations\EF.cs" />
+    <Compile Include="Implementations\CountryServiceDapper.cs" />
     <Compile Include="Implementations\CountryServiceDb.cs" />
+    <Compile Include="Implementations\GetConnection.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -92,9 +122,17 @@
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICountryService.cs" />
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
     <Compile Include="Models\Country.cs" />
     <Compile Include="Implementations\CountryService.cs" />
     <Compile Include="Models\Repos.cs" />
+    <Compile Include="MyDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Second.aspx.cs">
       <DependentUpon>Second.aspx</DependentUpon>
@@ -105,6 +143,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MasterPage.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

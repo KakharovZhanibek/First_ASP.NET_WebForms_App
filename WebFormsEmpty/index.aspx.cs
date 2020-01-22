@@ -19,11 +19,12 @@ namespace WebFormsEmpty
         private readonly ICountryService countryService;
         public index()
         {
-            countryService = new CountryServiceDb();
+            countryService = new CountryServiceEF();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //GridViewRefresh();
+            countryService.Add(new Country { Id=9,Name="Italy",Capital="Rome"});
+            GridViewRefresh();
             //Session["DateTime_Now"] = DateTime.Now;
             //Session["Date_Now"] = DateTime.Now.Date;
 
@@ -33,8 +34,7 @@ namespace WebFormsEmpty
 
             //countryService.Add(new Country() { Name="China",Capital="Pekin" });
             //countryService.Delete(4);
-            GridView1.DataSource = countryService.GetById(1);
-            GridView1.DataBind();
+            
 
         }
         public void GridViewRefresh()
