@@ -16,7 +16,7 @@ namespace WebFormsEmpty
     public partial class index : System.Web.UI.Page
     {
         //private CountryService countryService;
-        private readonly ICountryService countryService;
+        private readonly IMultiService<Country> countryService;
         public index()
         {
             countryService = new CountryServiceEF();
@@ -76,6 +76,11 @@ namespace WebFormsEmpty
         }
 
         protected void EditCountry_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

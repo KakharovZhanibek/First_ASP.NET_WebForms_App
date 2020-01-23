@@ -7,7 +7,7 @@ using WebFormsEmpty.Interfaces;
 
 namespace WebFormsEmpty.Models
 {
-    public class CountryServiceEF : ICountryService
+    public class CountryServiceEF : IMultiService<Country>
     {
         MyDb myDb;
 

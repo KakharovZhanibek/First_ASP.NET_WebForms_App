@@ -84,10 +84,12 @@
       <DependentUpon>Mydb.mdf</DependentUpon>
     </Content>
     <Content Include="Contacts.aspx" />
+    <Content Include="Footer.ascx" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="Second.aspx" />
     <Content Include="Second.html" />
+    <Content Include="TopMenu.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -107,9 +109,17 @@
     <Compile Include="Contacts.aspx.designer.cs">
       <DependentUpon>Contacts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Footer.ascx.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Footer.ascx.designer.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Implementations\CityServiceDapper.cs" />
     <Compile Include="Implementations\EF.cs" />
     <Compile Include="Implementations\CountryServiceDapper.cs" />
     <Compile Include="Implementations\CountryServiceDb.cs" />
@@ -121,7 +131,8 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\ICountryService.cs" />
+    <Compile Include="Interfaces\IMultiService.cs" />
+    <Compile Include="Interfaces\IMultyOther.cs" />
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +140,7 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Implementations\CountryService.cs" />
     <Compile Include="Models\Repos.cs" />
@@ -140,6 +152,13 @@
     </Compile>
     <Compile Include="Second.aspx.designer.cs">
       <DependentUpon>Second.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TopMenu.ascx.cs">
+      <DependentUpon>TopMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TopMenu.ascx.designer.cs">
+      <DependentUpon>TopMenu.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

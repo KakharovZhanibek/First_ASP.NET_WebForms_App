@@ -1,16 +1,8 @@
-﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Contacts.aspx.cs" Inherits="WebFormsEmpty.Contacts" %>
+﻿<%@ Page Title="Contacts" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Contacts.aspx.cs" Inherits="WebFormsEmpty.Contacts" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div>
+        <label>87074100376</label>
+    </div>
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <label>87074100376</label>
-        </div>
-    </form>
-</body>
-</html>

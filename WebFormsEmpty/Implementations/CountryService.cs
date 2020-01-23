@@ -7,7 +7,7 @@ using WebFormsEmpty.Models;
 
 namespace WebFormsEmpty.Implementations
 {
-    public class CountryService : ICountryService
+    public class CountryService : IMultiService<Country>
     {
         private Repos repos;
 
@@ -81,26 +81,6 @@ namespace WebFormsEmpty.Implementations
                 c.Name = country.Name;
                 c.Capital = country.Capital;
             }
-        }
-
-        List<Country> ICountryService.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Country> ICountryService.GetAll2()
-        {
-            throw new NotImplementedException();
-        }
-
-        Country ICountryService.GetById(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Country> ICountryService.GetByName(string Name)
-        {
-            throw new NotImplementedException();
         }
     }
 }

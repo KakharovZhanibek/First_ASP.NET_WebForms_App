@@ -11,7 +11,7 @@ using WebFormsEmpty.Models;
 
 namespace WebFormsEmpty.Implementations
 {
-    public class CountryServiceDapper :GetConnection,ICountryService
+    public class CountryServiceDapper :GetConnection,IMultiService<Country>
     {
         public void Add(Country country)
         {

@@ -10,7 +10,7 @@ using WebFormsEmpty.Models;
 
 namespace WebFormsEmpty.Implementations
 {
-    public class CountryServiceDb : ICountryService
+    public class CountryServiceDb : IMultiService<Country>
     {
         public void Add(Country country)
         {
